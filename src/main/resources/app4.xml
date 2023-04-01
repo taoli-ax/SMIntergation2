@@ -28,10 +28,18 @@
 <!--    <bean id="departmentMapper" class="com.coh.mapper.impl.DepartmentMapperImpl">-->
 <!--        <property name="sqlSessionFactory" ref="sqlSessionFactoryBean"/>-->
 <!--    </bean>-->
+
+
 <!--无需配置22-26行，直接加入对应的单个mapper接口-->
-    <bean id="departmentMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
-        <property name="mapperInterface" value="com.coh.mapper.DepartmentMapper"/>
-        <property name="sqlSessionFactory" ref="sqlSessionFactoryBean"/>
+<!--    <bean id="departmentMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">-->
+<!--        <property name="mapperInterface" value="com.coh.mapper.DepartmentMapper"/>-->
+<!--        <property name="sqlSessionFactory" ref="sqlSessionFactoryBean"/>-->
+<!--    </bean>-->
+
+
+<!--   需要加上注解配置使用，这里的basePackage的value是对应的的mapper路径下所有的Mapper，直接注册为MapperFactoryBean -->
+    <bean  class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.coh.mapper"/>
     </bean>
     <bean id="departmentService" class="com.coh.service.impl.DepartmentServiceImpl">
         <property name="departmentMapper" ref="departmentMapper"/>
