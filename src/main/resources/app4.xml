@@ -19,13 +19,18 @@
     <bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <property name="configLocation" value="classpath:mybatisConfig.xml"/>
-        <property name="mapperLocations">
-            <list>
-                <value>classpath:DepartmentMapper.xml</value>
-            </list>
-        </property>
+<!--        <property name="mapperLocations">-->
+<!--            <list>-->
+<!--                <value>classpath:DepartmentMapper.xml</value>-->
+<!--            </list>-->
+<!--        </property>-->
     </bean>
-    <bean id="departmentMapper" class="com.coh.mapper.impl.DepartmentMapperImpl">
+<!--    <bean id="departmentMapper" class="com.coh.mapper.impl.DepartmentMapperImpl">-->
+<!--        <property name="sqlSessionFactory" ref="sqlSessionFactoryBean"/>-->
+<!--    </bean>-->
+<!--无需配置22-26行，直接加入对应的单个mapper接口-->
+    <bean id="departmentMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="com.coh.mapper.DepartmentMapper"/>
         <property name="sqlSessionFactory" ref="sqlSessionFactoryBean"/>
     </bean>
     <bean id="departmentService" class="com.coh.service.impl.DepartmentServiceImpl">
