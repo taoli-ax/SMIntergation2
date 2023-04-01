@@ -2,7 +2,7 @@
 再次尝试集成mybatis到sping
 
 
-# 重要解决bug
+## 重要解决bug
 **报错 ： invalid bound (not found):com.coh.mapper.DepartmentMapper.findAll**
 
 1. 反复检查`文件名 namespace, value, com.coh.mapper`路径等方面，都没有发现任何异常
@@ -20,3 +20,9 @@
 
 6. 解决方案是把lombok版本由原来的1.18.10换成1.18.22
 7. 坑爹啊！这么隐蔽对新手真的好吗，maven兄出来解释一下
+
+## 重要bug解决
+1. 请检查target编译文件中是否有`XxxClassMapper.xml`文件
+2. 没有的话，测试会报错 ` invalid bound(not found)`
+3. 请手动添加这个文件到target相应目录下
+4. 解决！
