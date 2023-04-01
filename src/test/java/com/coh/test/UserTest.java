@@ -1,5 +1,6 @@
 package com.coh.test;
 
+import com.coh.pojo.Cup;
 import com.coh.pojo.Department;
 import com.coh.pojo.User;
 import com.coh.service.*;
@@ -73,17 +74,24 @@ public class UserTest {
 //        chargeService.doCharge();
 //
 //    }
+//
+//    @Test
+//    public void testMybatisDepartment(){
+//        ApplicationContext applicationContext=new ClassPathXmlApplicationContext("app4.xml");
+//        DepartmentServiceImpl departmentServiceimpl=applicationContext.getBean("departmentService", DepartmentServiceImpl.class);
+//        List<Department> departmentList=  departmentServiceimpl.findAll();
+//        for (Department dept:departmentList
+//             ) {
+//            System.out.println(dept);
+//        };
+//
+//    }
 
     @Test
-    public void testMybatisDepartment(){
-        ApplicationContext applicationContext=new ClassPathXmlApplicationContext("app4.xml");
-        DepartmentServiceImpl departmentServiceimpl=applicationContext.getBean("departmentService", DepartmentServiceImpl.class);
-        List<Department> departmentList=  departmentServiceimpl.findAll();
-        for (Department dept:departmentList
-             ) {
-            System.out.println(dept);
-        };
-
+    public void testBean(){
+        ApplicationContext applicationContext=new ClassPathXmlApplicationContext("app5Bean.xml");
+        Cup cup=(Cup) applicationContext.getBean("myCup");
+        System.out.println(cup);
     }
 
     
