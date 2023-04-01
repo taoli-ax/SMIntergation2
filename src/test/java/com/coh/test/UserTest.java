@@ -1,7 +1,9 @@
 package com.coh.test;
 
+import com.coh.config.JavaConfigForDoll;
 import com.coh.pojo.Cup;
 import com.coh.pojo.Department;
+import com.coh.pojo.Doll;
 import com.coh.pojo.User;
 import com.coh.service.*;
 import com.coh.service.impl.DepartmentServiceImpl;
@@ -92,6 +94,13 @@ public class UserTest {
         ApplicationContext applicationContext=new ClassPathXmlApplicationContext("app5Bean.xml");
         Cup cup=(Cup) applicationContext.getBean("myCup");
         System.out.println(cup);
+    }
+
+    @Test
+    public void testMyBean(){
+        JavaConfigForDoll javaConfigForDoll=new JavaConfigForDoll();
+        Doll doll=(Doll)javaConfigForDoll.getBean("myAnnotation");
+        System.out.println(doll);
     }
 
     
