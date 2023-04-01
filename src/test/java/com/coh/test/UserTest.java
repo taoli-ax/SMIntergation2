@@ -1,13 +1,14 @@
 package com.coh.test;
 
+import com.coh.pojo.Department;
 import com.coh.pojo.User;
-import com.coh.service.BirdService;
-import com.coh.service.CarService;
-import com.coh.service.ChargeService;
-import com.coh.service.UserService;
+import com.coh.service.*;
+import com.coh.service.impl.DepartmentServiceImpl;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import java.util.List;
 
 public class UserTest {
     @Test
@@ -70,6 +71,18 @@ public class UserTest {
         ApplicationContext applicationContext=new ClassPathXmlApplicationContext("app3.xml");
         ChargeService chargeService=(ChargeService)applicationContext.getBean("chargeService");
         chargeService.doCharge();
+
+    }
+
+    @Test
+    public void testMybatisDepartment(){
+        ApplicationContext applicationContext=new ClassPathXmlApplicationContext("app4.xml");
+        DepartmentServiceImpl departmentServiceimpl=applicationContext.getBean("departmentService", DepartmentServiceImpl.class);
+        List<Department> departmentList=  departmentServiceimpl.findAll();
+        for (Department dept:departmentList
+             ) {
+            System.out.println(dept);
+        };
 
     }
 

@@ -9,4 +9,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Department {
     String name;
+    String deptNo;
+    String loc;
 }
